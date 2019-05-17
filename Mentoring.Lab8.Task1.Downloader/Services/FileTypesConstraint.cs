@@ -22,6 +22,12 @@ namespace Mentoring.Lab8.Task1.Downloader.Services
         public bool IsValid(Uri uri)
         {
             var lastSegment = uri.Segments.Last();
+
+            if (lastSegment == null)
+            {
+                return false;
+            }
+
             return _allowedExtensions.Any(ae => lastSegment.EndsWith(ae));
         }
     }
